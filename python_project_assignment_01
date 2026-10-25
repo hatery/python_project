@@ -1,0 +1,102 @@
+balance=10000
+pin=1234
+atttempt=0
+# user_deposite=0
+# user_withrow=0
+while atttempt < 3:
+    user_pin=int(input("enter your pin: "))
+    if user_pin == pin:
+        print("correct!")
+        break
+    else:
+        atttempt+=1
+        if atttempt<3:
+            print("Incorrect PIN! Attempts left:", 3 - atttempt)
+        else:
+            print("Card block")
+
+while True:
+    if user_pin==pin:
+        user=int(input('''
+   1.check balance
+   2.deposite
+   3.withrow
+   4.exit
+   ''' ))
+    if user==1:
+        print("ur balance",balance)
+    elif user==2:
+        deposit=int(input("enter amount:"))
+        new_balance=balance+deposit
+        print("DEPOSITE SUCCESFULLY !!TOTAL AMOUNT:",new_balance)
+    elif user==3:
+        user_withrow=int(input("enter ur amount:"))
+        if user_withrow<=balance:
+            left_balance=balance-user_withrow
+            print("withrow succesful!! u have left amount",left_balance)
+        else:
+            print("invalide amount")
+    elif user==4:
+        print("exit")
+        break
+    else:
+        print("invalid input")
+########################################################################
+   #Q-2:
+students = {"Aman": [85, 90, 78], "Riya": [92, 88, 95], "Zoya": [70, 65, 80]}
+marks=[]
+while True:
+    user=int(input('''
+    1. Add students
+    2.View all
+    3.Show topper
+    4.Exist
+    '''))
+ 
+    if user==1:
+        while True:
+            name=input("enter name: ")
+            if name in students:
+                print("students already in list")
+            else:
+                break
+        
+        for i in range(1,4):
+            while True:
+             marks_user=int(input("entr marks{i}: "))
+             if marks_user>=0 and marks_user<=100:
+                marks.append(marks_user)
+                break
+             else:
+                print("Invalide amrks,try again ")
+        students[name]=marks
+        print(f"students{name} added succesfully")
+    elif user==2:
+       for name,marks in students.items():
+          average=sum(marks)/len(marks)
+          if average>=85:
+             grade="A"
+          elif average>=70:
+             grade="B"
+          elif average>=50:
+             grade="c"
+          else:
+             grade="F"
+          print(f"{name} {average:.2f}{grade}")
+    elif user==3:
+       highest=-1
+       toper=""
+       for name,marks in students.items():
+        average=sum(marks)/len(marks)
+        if average>highest:
+            highest=average
+            toper=name
+         
+         
+       print(f"Topper: {toper}")
+    elif user==4:
+       print("Exist")
+    else:
+       print("=Invalid input")
+
+       
